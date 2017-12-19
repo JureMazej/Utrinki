@@ -1,0 +1,13 @@
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\WinFormsUPORABNIKI.exe.config
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\WinFormsUPORABNIKI.exe
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\WinFormsUPORABNIKI.pdb
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.csprojResolveAssemblyReference.cache
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.Form1.resources
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.Properties.Resources.resources
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.csproj.GenerateResource.Cache
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.exe
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\obj\Debug\WinFormsUPORABNIKI.pdb
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\EntityFramework.dll
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\EntityFramework.xml
+C:\Users\Vid\Desktop\Utrinki\utrinki_test\WinFormsUPORABNIKI\WinFormsUPORABNIKI\bin\Debug\EntityFramework.SqlServer.xml

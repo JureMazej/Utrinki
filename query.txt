@@ -1,0 +1,148 @@
+Create table [OSEBA] (
+	[stevilka] Integer Identity(1,1) NOT NULL,
+	[ime] Nvarchar(50) NOT NULL,
+	[priimek] Nvarchar(50) NOT NULL,
+	[status] Nvarchar(20) NULL,
+	[sola] Nvarchar(100) NULL,
+	[elektronska_posta] Char(100) NOT NULL UNIQUE,
+Primary Key  ([stevilka])
+) 
+go
+
+Create table [UTRINEK] (
+	[stevilka_utrinka] Integer Identity(1,1) NOT NULL,
+	[datum_oddaje] Datetime NOT NULL,
+	[izhodisce] Ntext NOT NULL,
+	[resitev] Ntext NOT NULL,
+	[korist] Ntext NOT NULL,
+	[primernost] Nvarchar(10) NULL,
+	[stevilka_osebe_oddal] Integer NOT NULL,
+Primary Key  ([stevilka_utrinka])
+) 
+go
+
+Create table [KOMENTAR_FORUM] (
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+	[stevilka_komentarja] Integer NOT NULL,
+	[datum] Datetime NOT NULL,
+	[besedilo] Ntext NOT NULL,
+	[status] Bit Default 1 NOT NULL,
+	[IP] Char(15) NULL,
+	[stevilka_utrinka_original] Integer NOT NULL,
+	[verzija_utrinka_original] Integer NOT NULL,
+	[stevilka_komentarja_original] Integer NOT NULL,
+	[stevilka_osebe] Integer NULL,
+Primary Key  ([stevilka_utrinka],[verzija_utrinka],[stevilka_komentarja])
+) 
+go
+
+Create table [GLASOVANJE] (
+	[vprašanje] Char(10) NULL,
+	[zacetek_glasovanja] Datetime NULL,
+	[konec_glasovanja] Datetime NULL,
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+Primary Key  ([stevilka_utrinka],[verzija_utrinka])
+) 
+go
+
+Create table [MOZNI_ODGOVORI] (
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+	[stevilka_odgovora] Integer NOT NULL,
+	[odgovor] Nvarchar(200) NULL,
+	[datum_oddanega_odgovora] Datetime NULL,
+Primary Key  ([stevilka_utrinka],[verzija_utrinka],[stevilka_odgovora])
+) 
+go
+
+Create table [UTRINEK_OBRAVNAVAN] (
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+	[datum_obravnave] Datetime NOT NULL,
+	[status] Nvarchar(20) NOT NULL,
+	[komentar] Ntext NOT NULL,
+	[datum_za_nadaljno_obravnavo] Datetime NULL,
+Primary Key  ([stevilka_utrinka],[verzija_utrinka])
+) 
+go
+
+Create table [FORUM] (
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+	[opis] Nvarchar(300) NOT NULL,
+	[zacetek] Datetime NOT NULL,
+	[konec] Datetime NULL,
+Primary Key  ([stevilka_utrinka],[verzija_utrinka])
+) 
+go
+
+Create table [UPORABNIKI] (
+	[stevilka] Integer NOT NULL,
+	[uporabnisko_ime] Char(30) NOT NULL,
+	[geslo] Char(256) NOT NULL,
+	[skupina] Char(20) NOT NULL,
+	[zadnja_prijava] Char(10) NULL,
+	[stevilo_neveljavnih_prijav] Integer Default 0 NULL,
+Primary Key  ([stevilka])
+) 
+go
+
+Create table [SKUPINA] (
+	[stevilka_osebe] Integer NOT NULL,
+	[ime] Char(15) NOT NULL,
+	[geslo] Char(512) NULL,
+Primary Key  ([stevilka_osebe],[ime])
+) 
+go
+
+Create table [ZADOLZENI_ZA_UTRINEK] (
+	[stevilka_osebe] Integer NOT NULL,
+	[stevilka_utrinka] Integer NOT NULL,
+	[verzija_utrinka] Integer NOT NULL,
+	[odgovoren] Bit Default 0 NULL,
+Primary Key  ([stevilka_osebe],[stevilka_utrinka],[verzija_utrinka])
+) 
+go
+
+Create table [UTRINEK_MODERIRAN] (
+	[stevilka_utrinka] Integer Identity(1,1) NOT NULL,
+	[verzija] Integer NOT NULL,
+	[datum_moderiranja] Datetime NULL,
+	[izhodisce] Ntext NOT NULL,
+	[resitev] Ntext NOT NULL,
+	[korist] Ntext NOT NULL,
+	[primernost] Nvarchar(10) NULL,
+Primary Key  ([stevilka_utrinka],[verzija])
+) 
+go
+
+
+
+
+
+Alter table [UTRINEK] add  foreign key([stevilka_osebe_oddal]) references [OSEBA] ([stevilka]) 
+go
+Alter table [KOMENTAR_FORUM] add  foreign key([stevilka_osebe]) references [OSEBA] ([stevilka]) 
+go
+Alter table [SKUPINA] add  foreign key([stevilka_osebe]) references [OSEBA] ([stevilka]) 
+go
+Alter table [ZADOLZENI_ZA_UTRINEK] add  foreign key([stevilka_osebe]) references [OSEBA] ([stevilka]) 
+go
+Alter table [UTRINEK_OBRAVNAVAN] add  foreign key([stevilka_utrinka]) references [UTRINEK] ([stevilka_utrinka]) 
+go
+Alter table [UTRINEK_MODERIRAN] add  foreign key([verzija]) references [UTRINEK] ([stevilka_utrinka]) 
+go
+Alter table [KOMENTAR_FORUM] add  foreign key([stevilka_utrinka_original],[verzija_utrinka_original],[stevilka_komentarja_original]) references [KOMENTAR_FORUM] ([stevilka_utrinka],[verzija_utrinka],[stevilka_komentarja]) 
+go
+Alter table [MOZNI_ODGOVORI] add  foreign key([stevilka_utrinka],[verzija_utrinka]) references [GLASOVANJE] ([stevilka_utrinka],[verzija_utrinka]) 
+go
+Alter table [FORUM] add  foreign key([stevilka_utrinka],[verzija_utrinka]) references [UTRINEK_OBRAVNAVAN] ([stevilka_utrinka],[verzija_utrinka]) 
+go
+Alter table [GLASOVANJE] add  foreign key([stevilka_utrinka],[verzija_utrinka]) references [UTRINEK_OBRAVNAVAN] ([stevilka_utrinka],[verzija_utrinka]) 
+go
+Alter table [ZADOLZENI_ZA_UTRINEK] add  foreign key([stevilka_utrinka],[verzija_utrinka]) references [UTRINEK_OBRAVNAVAN] ([stevilka_utrinka],[verzija_utrinka]) 
+go
+Alter table [KOMENTAR_FORUM] add  foreign key([stevilka_utrinka],[verzija_utrinka]) references [FORUM] ([stevilka_utrinka],[verzija_utrinka]) 
+go
